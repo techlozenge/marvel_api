@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Marvel Characters</title>
+  </head>
+  <body id="body">
+
+    <div style="width: 100%; margin: 0 auto; align: center">
+      <h1 id="page-heading" style="margin-bottom:5px;"></h1><br /><br />
+    </div>
+
+    <label>Enter Starting Characters to Filter:</label>
+    <input id="startswith" placeholder="Starts With...">
+    <button id="submit">SUBMIT</button><br><br /><br />
+    <button id="refresh">REFRESH</button><br><br /><br />
+
+
+    <style type="text/css">
+         #dynamictable table {
+             width: 75%;
+             vertical-align: top;
+             text-align: left;
+         }
+         #dynamictable table tr td th {
+             border: solid 1px black;
+             vertical-align: top;
+             text-align: left;
+         }
+         table {
+           border: 1px solid black;
+         }
+         td {
+           border: 1px solid black;
+         }
+         img {
+           display: block;
+           vertical-align: bottom;
+           height: 120px;
+           width: 120px;
+         }
+     </style>
+    <div id="dynamictable"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascripts/marvel.js"></script>
+    <script type="text/javascript"></script>
+  </body>
+</html>

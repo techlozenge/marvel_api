@@ -1,0 +1,75 @@
+
+The Marvel Comics API’s base endpoint is http(s)://gateway.marvel.com/
+
+________________________________________________________________________________
+http://www.md5hashgenerator.com/ & enter 1 then private key then public key.
+no spaces or any extra characters!!!
+
+1 (timestamp) private key public key
+
+click generate hash - this is usually good for a single day
+
+generated 6-6-2017: 0ccab67d6d383dd5d750b361a4cbca17
+
+From the doc:
+
+Server-side applications must pass two parameters in addition to the apikey parameter:
+ts - a timestamp (or other long string which can change on a request-by-request basis)
+hash - a md5 digest of the ts parameter, your private key and your public key (e.g. md5(ts+privateKey+publicKey)
+For example, a user with a public key of "1234" and a private key of "abcd" could construct a valid call as follows: http://gateway.marvel.com/v1/comics?ts=1&apikey=1234&hash=ffd275c5130566a2916217b101f26150 (the hash value is the md5 digest of 1abcd1234)
+
+Here is the base path + the get: http://gateway.marvel.com/
+
+/v1/public/characters
+
+nameStartsWith - Single string with a variable embedded inside it
+$.get( 'http:gateway.marvel.com/v1/public/characters?limit=100&nameStartsWith=' + $("#startswith").val() + '&ts=1&apikey=8e772030b79a222c38c4d89b084bcfa2&hash=0ccab67d6d383dd5d750b361a4cbca17'
+
+limit - just a single string
+$.get( "http://gateway.marvel.com/v1/public/characters?limit=100&ts=1&apikey=8e772030b79a222c38c4d89b084bcfa2&hash=0ccab67d6d383dd5d750b361a4cbca17"
+
+name=spider-man&
+$.get( 'http:gateway.marvel.com/v1/public/characters?limit=100&nameStartsWith=' + $("#startswith").val() + '&ts=1&apikey=8e772030b79a222c38c4d89b084bcfa2&hash=0ccab67d6d383dd5d750b361a4cbca17'
+________________________________________________________________________________
+
+
+GET https://gateway.marvel.com/v1/public/characters
+
+Dan761254
+Logged in using Google
+
+Here's your personal Marvel Comics API information:
+
+Your public key
+
+8e772030b79a222c38c4d89b084bcfa2
+
+All calls to the Marvel Comics API must pass your public key via an “apikey” parameter.
+
+Requests from client-side (browser-based) applications must originate from a pre-authorized web site or browser extension URL.
+
+You may add or edit your authorized domains in your API account panel. You may use the “*” wildcard to denote subdomains or paths. For example:
+
+marvel.com - will authorize requests from Marvel.com but no subdomains of Marvel.com
+developer.marvel.com - will authorize requests from developer.marvel.com
+*.marvel.com - will authorize requests from any Marvel.com subdomain as well as Marvel.com
+*.marvel.com/apigateway - will authorize requests from the apigateway path on any Marvel.com subdomain as well as Marvel.com
+
+
+Your private key
+
+d9aa560764906a23b5d0f1212c78ea3b33a25bbc
+
+Read more about how to use your keys to sign requests:
+https://developer.marvel.com/documentation/authorization
+
+Your rate limit:
+
+
+3000
+calls/day  Number of calls your application can make per day.
+Your authorized referrers
+
+List any domains that can make calls to the Marvel Comics API using your API key here:
+ironyard.com
+ Note: List the domain and path only - don't include "http" or other scheme designations. Only use the characters a-z, 0-9, ., _, -, and *.
