@@ -12,19 +12,20 @@
 
     // NOTE: resets screen back to 100 characters
     $("#refresh").click(function(){
+      $('#startswith').val('');
       // clear the prior table
       $('#dynamictable').empty();
       getCharacters();
     }) // end click event
 
 
-    // NOTE: When the name link is clicked the getSingleName functional is call for that character
+    // NOTE: When the name link is clicked the getSingleName function is calling for that character
     $( "#dynamictable" ).delegate( "#nameclick", "click", function() {
       getSingleName( $(this).text() );
     });
 
 
-    // NOTE: This will retrieve 100 characters
+    // NOTE: This will retrieve 50 characters
     function getCharacters() {
       // start building our initial table of 100 names
       $('#dynamictable').append('<table></table>');
@@ -51,7 +52,7 @@
         table.append("<tr><th>Image</th><th>Character Name</th><th>Description</th></tr>");
         // NOTE: Limit is set to 100 in our API call
         // NOTE: Startswith is pulled from page textbox
-        $.get( 'http:gateway.marvel.com/v1/public/characters?limit=100&nameStartsWith=' + $("#startswith").val() + '&ts=1&apikey=8e772030b79a222c38c4d89b084bcfa2&hash=0ccab67d6d383dd5d750b361a4cbca17', function( data ) {
+        $.get( 'http:gateway.marvel.com/v1/public/characters?limit=10&nameStartsWith=' + $("#startswith").val() + '&ts=1&apikey=8e772030b79a222c38c4d89b084bcfa2&hash=0ccab67d6d383dd5d750b361a4cbca17', function( data ) {
           var result = data.data.results;
           if (result.length == 0) {
             table.append("<tr><td></td><td>RESULT SET IS EMPTY. PLEASE TRY AGAIN.</td><td></td></tr>");
@@ -59,7 +60,7 @@
           }
           $.each(result, function(index, value) {
             let image = '<img src="' + value.thumbnail.path + "." + value.thumbnail.extension + '">';
-            table.append("<tr><td>" + image + "+</td><td id='nameclick'><a href='#'>" + value.name + "</a></td>" + "<td>" + value.description + "</td></tr>");
+            table.append("<tr><td>" + image + "+</td><td id='nameclick'><a href='#'>" + value.name + "</a></td>" + "<td>" + value.description + "</td></tr>");  
           }) // end each
         }); // end get
     } // end getStartsWith()
@@ -111,7 +112,7 @@
     $("#refresh").css("background-color", "black");
     $("#refresh").css("color", "white");
 
-    // NOTE: Build our initial page table of 100 characters
+    // NOTE: Build our initial page table of 50 characters
     getCharacters();
 
   }) // end page load
